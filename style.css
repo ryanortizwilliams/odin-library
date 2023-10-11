@@ -16,11 +16,8 @@
 #add-btn {
   padding-right: 10px;
 }
-#add-btn:hover {
+.btn:hover {
   color: tomato;
-}
-#add-btn:active {
-  font-size: 37px;
 }
 
 .content {
@@ -60,7 +57,12 @@
 }
 
 .hasRead {
+  width: 80%;
   display: flex;
   flex: 1;
   gap: 10px;
+}
+
+.delete-btn {
+  margin-left: auto;
 }
