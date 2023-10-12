@@ -19,6 +19,7 @@ const harryPotter = new Book(
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
+  displayBooks();
 }
 
 addBookToLibrary(theHobbit);
@@ -28,9 +29,10 @@ console.log(myLibrary);
 
 function displayBooks() {
   // get DOM Element
+  const content = document.querySelector(".content");
+  content.replaceChildren();
 
   for (let i = 0; i < myLibrary.length; i++) {
-    const content = document.querySelector(".content");
     //Create Element for book
     let currentBook = myLibrary[i];
     let bookCard = document.createElement("div");
@@ -88,21 +90,12 @@ function displayBooks() {
   }
 }
 
-displayBooks();
-/*
-TODO: 
--Get content DOM element
--make display Library(loop through myLibrary, for each item, display a card)
+//add book behavior
+const addButton = document.getElementById("add-btn");
+addButton.addEventListener("click", function () {
+  addBookToLibrary(harryPotter);
+  console.log(myLibrary);
+});
 
-<div class="book-card">
-        <div class="book-img">No Image</div>
-        <h1>Harry Potter and the Chamber of Secrets</h1>
-        <p>author: J.K Rowling</p>
-        <p>page #: 290 pages</p>
-        <div class="hasRead">
-          <p>have read:</p>
-          <input type="checkbox" name="read" id="read" />
-          <i class="fa-solid fa-circle-minus btn delete-btn"></i>
-        </div>
-      </div>
- */
+//Initial display of books
+displayBooks();
