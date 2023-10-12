@@ -16,6 +16,26 @@
       <h1>My Library</h1>
       <i class="fa-solid fa-2x fa-circle-plus btn" id="add-btn"></i>
     </nav>
+
+    <!-- modal -->
+    <section class="modal hidden">
+      <h1>Add a Book</h1>
+      <form action="#">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" required />
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" required />
+        <label for="page-number">Page #:</label>
+        <input type="text" name="page-number" id="page-number" required />
+        <div>
+          <label for="read">Have you read this yet? </label>
+          <input type="checkbox" name="read" id="read" required />
+        </div>
+        <button type="submit" class="submit-btn">Add</button>
+      </form>
+    </section>
+
+    <!-- main content -->
     <div class="content">
       <div class="book-card">
         <div class="book-img">No Image</div>
