@@ -101,11 +101,27 @@ closeButton.addEventListener("click", function () {
   toggleModal();
 });
 
-//TODO: Make function to toggle modal
 function toggleModal() {
   const modal = document.querySelector(".modal");
   modal.classList.toggle("hidden");
 }
+
+//TODO: get form info and display it on the page
+const bookForm = document.getElementById("book-form");
+bookForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const title = formData.get("title");
+  const author = formData.get("author");
+  const pageNumber = formData.get("page-number");
+  const read = formData.get("read");
+  const cover = formData.get("cover");
+  //make book object
+  const newBook = new Book(title, author, pageNumber, read, cover);
+  addBookToLibrary(newBook);
+  toggleModal();
+});
 
 //Initial display of books
 displayBooks();

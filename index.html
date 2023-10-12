@@ -20,13 +20,15 @@
     <!-- modal -->
     <section class="modal hidden">
       <h1>Add a Book</h1>
-      <form action="#">
+      <form id="book-form">
         <label for="title">Title:</label>
         <input type="text" name="title" id="title" required />
         <label for="author">Author:</label>
         <input type="text" name="author" id="author" required />
         <label for="page-number">Page #:</label>
         <input type="text" name="page-number" id="page-number" required />
+        <label for="cover">Cover Image URL(optional)</label>
+        <input type="text" name="cover" id="cover" />
         <div>
           <label for="read">Have you read this yet? </label>
           <input type="checkbox" name="read" id="read" required />
