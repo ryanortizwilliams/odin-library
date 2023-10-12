@@ -39,6 +39,7 @@
 }
 
 .book-img {
+  display: flex;
   height: 70%;
   width: 80%;
   display: flex;
@@ -47,6 +48,11 @@
   background-color: brown;
   color: aliceblue;
   text-align: start;
+}
+
+.book-img img {
+  height: 100%;
+  width: auto;
 }
 
 .book-card h1 {

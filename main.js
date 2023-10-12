@@ -1,10 +1,11 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, cover = "") {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.cover = cover;
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
@@ -12,7 +13,8 @@ const harryPotter = new Book(
   "Harry Potter and the Chamber of Secrets",
   "J.K Rowling",
   290,
-  true
+  true,
+  "https://m.media-amazon.com/images/I/81S0LnPGGUL._AC_UF1000,1000_QL80_.jpg"
 );
 
 function addBookToLibrary(book) {
@@ -34,22 +36,52 @@ function displayBooks() {
     let bookCard = document.createElement("div");
 
     bookCard.setAttribute("class", "book-card");
+
+    //image
+    let cover = document.createElement("div");
+    cover.setAttribute("class", "book-img");
+    if (currentBook.cover) {
+      cover.innerHTML = ` <img
+      src="${currentBook.cover}"
+      alt=""
+    />`;
+    } else {
+      cover.textContent = "No Image";
+    }
+
+    bookCard.appendChild(cover);
     // Title
     let title = document.createElement("h1");
     title.textContent = `${currentBook.title}`;
     bookCard.appendChild(title);
     //Author
-    let author = document.createElement("h1");
-    author.textContent = `author: ${currentBook.author}`;
+    let author = document.createElement("p");
+    author.textContent = `By ${currentBook.author}`;
     bookCard.appendChild(author);
     // Page#
     let pageNum = document.createElement("p");
+
     pageNum.textContent = `${currentBook.pages} pages`;
     bookCard.appendChild(pageNum);
 
     // Has read
     let hasRead = document.createElement("div");
-    hasRead.innerHTML = "";
+    if (currentBook.read) {
+      hasRead.innerHTML = `
+    <p>have read:</p>
+          <input type="checkbox" name="read" class="read" checked />
+          <i class="fa-solid fa-circle-minus btn delete-btn"></i>
+    `;
+    } else {
+      hasRead.innerHTML = `
+    <p>have read:</p>
+          <input type="checkbox" name="read" class="read" />
+          <i class="fa-solid fa-circle-minus btn delete-btn"></i>
+    `;
+    }
+
+    hasRead.setAttribute("class", "hasRead");
+    bookCard.appendChild(hasRead);
 
     //Add to .content section
     content.appendChild(bookCard);
