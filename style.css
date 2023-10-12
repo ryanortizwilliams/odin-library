@@ -21,6 +21,9 @@
   background-color: gainsboro;
 }
 
+.hidden {
+  display: none;
+}
 .modal form {
   width: fit-content;
   display: flex;

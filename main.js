@@ -93,9 +93,19 @@ function displayBooks() {
 //add book behavior
 const addButton = document.getElementById("add-btn");
 addButton.addEventListener("click", function () {
-  addBookToLibrary(harryPotter);
-  console.log(myLibrary);
+  toggleModal();
 });
+
+const closeButton = document.querySelector(".close-btn");
+closeButton.addEventListener("click", function () {
+  toggleModal();
+});
+
+//TODO: Make function to toggle modal
+function toggleModal() {
+  const modal = document.querySelector(".modal");
+  modal.classList.toggle("hidden");
+}
 
 //Initial display of books
 displayBooks();
