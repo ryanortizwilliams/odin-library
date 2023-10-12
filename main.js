@@ -36,8 +36,10 @@ function displayBooks() {
     //Create Element for book
     let currentBook = myLibrary[i];
     let bookCard = document.createElement("div");
+    let idNum = i;
 
     bookCard.setAttribute("class", "book-card");
+    bookCard.setAttribute("id", idNum);
 
     //image
     let cover = document.createElement("div");
@@ -125,3 +127,11 @@ bookForm.addEventListener("submit", function (e) {
 
 //Initial display of books
 displayBooks();
+
+//TODO: Create a remove function, it should take the id of the div and remove the item from the screen as well as the list.
+
+function removeBook(id) {
+  //remove from
+  myLibrary.splice(id, 1);
+  displayBooks();
+}
