@@ -8,22 +8,36 @@ function Book(title, author, pages, read, cover = "") {
   this.cover = cover;
 }
 
-const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 295, false);
+const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 310, false);
 const harryPotter = new Book(
   "Harry Potter and the Chamber of Secrets",
   "J.K Rowling",
-  290,
+  251,
   true,
   "https://m.media-amazon.com/images/I/81S0LnPGGUL._AC_UF1000,1000_QL80_.jpg"
 );
-
+const bellJar = new Book(
+  "The Bell Jar",
+  "Stylvia Plath",
+  244,
+  true,
+  "https://m.media-amazon.com/images/I/91163i7ah-L._AC_UF894,1000_QL80_.jpg"
+);
+const stranger = new Book(
+  "The Stranger",
+  "Albert Camus",
+  159,
+  true,
+  "https://m.media-amazon.com/images/I/81GjCVSEDAL._AC_UF1000,1000_QL80_.jpg"
+);
+addBookToLibrary(theHobbit);
+addBookToLibrary(harryPotter);
+addBookToLibrary(bellJar);
+addBookToLibrary(stranger);
 function addBookToLibrary(book) {
   myLibrary.push(book);
   displayBooks();
 }
-
-addBookToLibrary(theHobbit);
-addBookToLibrary(harryPotter);
 
 console.log(myLibrary);
 
@@ -36,10 +50,8 @@ function displayBooks() {
     //Create Element for book
     let currentBook = myLibrary[i];
     let bookCard = document.createElement("div");
-    let idNum = i;
 
     bookCard.setAttribute("class", "book-card");
-    bookCard.setAttribute("id", idNum);
 
     //image
     let cover = document.createElement("div");
@@ -74,15 +86,27 @@ function displayBooks() {
       hasRead.innerHTML = `
     <p>have read:</p>
           <input type="checkbox" name="read" class="read" checked />
-          <i class="fa-solid fa-circle-minus btn delete-btn"></i>
     `;
     } else {
       hasRead.innerHTML = `
     <p>have read:</p>
           <input type="checkbox" name="read" class="read" />
-          <i class="fa-solid fa-circle-minus btn delete-btn"></i>
     `;
     }
+
+    const deleteButton = document.createElement("i");
+    deleteButton.classList.add(
+      "fa-solid",
+      "fa-circle-minus",
+      "btn",
+      "delete-btn"
+    );
+    deleteButton.addEventListener("click", function () {
+      removeBook(i);
+    });
+    hasRead.appendChild(deleteButton);
+
+    //TODO: Add event listener to delete button
 
     hasRead.setAttribute("class", "hasRead");
     bookCard.appendChild(hasRead);
@@ -125,13 +149,8 @@ bookForm.addEventListener("submit", function (e) {
   toggleModal();
 });
 
-//Initial display of books
-displayBooks();
-
-//TODO: Create a remove function, it should take the id of the div and remove the item from the screen as well as the list.
-
 function removeBook(id) {
-  //remove from
+  //remove from list
   myLibrary.splice(id, 1);
   displayBooks();
 }
