@@ -1,11 +1,14 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read, cover = "") {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.cover = cover;
+//TODO change book into a class
+class Book {
+  constructor(title, author, pages, read, cover = "") {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.cover = cover;
+  }
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R Tolkien", 310, false);
@@ -132,7 +135,6 @@ function toggleModal() {
   modal.classList.toggle("hidden");
 }
 
-//TODO: get form info and display it on the page
 const bookForm = document.getElementById("book-form");
 bookForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -147,6 +149,7 @@ bookForm.addEventListener("submit", function (e) {
   const newBook = new Book(title, author, pageNumber, read, cover);
   addBookToLibrary(newBook);
   toggleModal();
+  bookForm.reset();
 });
 
 function removeBook(id) {
